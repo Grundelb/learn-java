@@ -3,14 +3,14 @@ package lesson.two;
 public class LengthOfLastWord {
 
     public static void getLengthOfLastWord(String sSentence) {
-        int i = sSentence.trim().lastIndexOf(" ");
-        int result = sSentence.trim().length() - i - 1;
+        int indexOfLastSpace = sSentence.trim().lastIndexOf(" ");
+        int result = sSentence.trim().length() - indexOfLastSpace - 1;
 
 
-        if (i == -1) {
+        if (indexOfLastSpace == -1) {
             System.out.println("The last word is " + "\"" + sSentence.trim() + "\"" + " with length " + sSentence.trim().length());
-        } else if (i >= 1) {
-            System.out.println("The last word is " + "\"" + sSentence.trim().substring(i+1) + "\"" + " with length " + result);
+        } else if (indexOfLastSpace >= 1) {
+            System.out.println("The last word is " + "\"" + sSentence.trim().substring(indexOfLastSpace+1) + "\"" + " with length " + result);
         }
     }
 
@@ -20,6 +20,8 @@ public class LengthOfLastWord {
         getLengthOfLastWord("Hello World");
         getLengthOfLastWord("   fly me   to   the moon  ");
         getLengthOfLastWord("luffy is still joyboy");
+        getLengthOfLastWord("Dusya is a dog");
+        getLengthOfLastWord( "Who is Gaechka?");
     }
 
 
