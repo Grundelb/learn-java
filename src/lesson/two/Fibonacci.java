@@ -7,25 +7,25 @@ public class Fibonacci {
             int prevNumberFibonacci = 0;
             int newNumberFibonacci;
 
-            do {
+        do {
 
-                newNumberFibonacci = prevNumberFibonacci + numberFibonacci;
+            newNumberFibonacci = prevNumberFibonacci + numberFibonacci;
 
-                if (x == newNumberFibonacci){
-                    return true;
+            if (x == newNumberFibonacci) {
+                return true;
 
-                }
+            }
 
-                prevNumberFibonacci = numberFibonacci;
-                numberFibonacci = newNumberFibonacci;
+            prevNumberFibonacci = numberFibonacci;
+            numberFibonacci = newNumberFibonacci;
 
-            } while (x > newNumberFibonacci);
+        } while (x > newNumberFibonacci);
 
         return false;
     }
 
     public static void main(String[] args) {
-        System.out.println(isFibonacci(14));
+        System.out.println(isFibonacci(1245654));
     }
 
 }

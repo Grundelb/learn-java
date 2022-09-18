@@ -16,7 +16,7 @@ public class FizzBuzz {
         getFizzBuzz(33);
         getFizzBuzz(55);
         getFizzBuzz(60);
-       // getFizzBuzz(0);
+        // getFizzBuzz(0);
         getFizzBuzz(-15);
         getFizzBuzz(198);
         getFizzBuzz(5);

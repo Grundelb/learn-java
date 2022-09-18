@@ -10,7 +10,7 @@ public class LengthOfLastWord {
         if (indexOfLastSpace == -1) {
             System.out.println("The last word is " + "\"" + sSentence.trim() + "\"" + " with length " + sSentence.trim().length());
         } else if (indexOfLastSpace >= 1) {
-            System.out.println("The last word is " + "\"" + sSentence.trim().substring(indexOfLastSpace+1) + "\"" + " with length " + result);
+            System.out.println("The last word is " + "\"" + sSentence.trim().substring(indexOfLastSpace + 1) + "\"" + " with length " + result);
         }
     }
 
@@ -21,7 +21,7 @@ public class LengthOfLastWord {
         getLengthOfLastWord("   fly me   to   the moon  ");
         getLengthOfLastWord("luffy is still joyboy");
         getLengthOfLastWord("Dusya is a dog");
-        getLengthOfLastWord( "Who is Gaechka?");
+        getLengthOfLastWord("Who is Gaechka?");
     }
 
 
