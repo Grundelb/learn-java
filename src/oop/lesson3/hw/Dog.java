@@ -1,6 +1,6 @@
 package oop.lesson3.hw;
 
-public class Dog extends Pet {
+public class Dog extends Pet implements PetInterface {
 
     public Dog(int eyesCount, String name){
         super(eyesCount);
@@ -17,4 +17,17 @@ public class Dog extends Pet {
         System.out.println("Dog plays");
     }
 
+    @Override
+    void animalEats() {
+        System.out.println("Dog eats");
+    }
+
+    public void animalDrinks(){
+        System.out.println("Dog drink");
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Dog runs");
+    }
 }

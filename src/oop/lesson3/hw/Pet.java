@@ -1,6 +1,6 @@
 package oop.lesson3.hw;
 
-public class Pet extends Animal {
+public abstract class Pet extends Animal {
 
     public Pet(int eyesCount) {
         setEyesCount(eyesCount);
@@ -36,9 +36,7 @@ public class Pet extends Animal {
         }
     }
 
-    public void run() {
-        System.out.println("Pet runs");
-    }
+
 
 
 }

@@ -8,6 +8,9 @@ public class Test {
         Animal animal = new Dog(2,"Dunya");
         Dog dog = new Dog(2, "Gaechka");
         dog.setPetPaw(4);
+        dog.animalEats();
+        dog.animalDrinks();
+        dog.run();
 
         String str = String.format("Dog %s has - %d eyes, %d tail, %d paws. Count of pets is %d", dog.getPetName(), dog.getEyesCount(), dog.getPetTail(),dog.getPetPaw(), Animal.getCountAnimals());
 

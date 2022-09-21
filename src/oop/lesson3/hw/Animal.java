@@ -2,7 +2,7 @@ package oop.lesson3.hw;
 
 
 
-public class Animal {
+public abstract class Animal {
 
     public Animal() {
         System.out.println("I am an animal");
@@ -37,13 +37,10 @@ public class Animal {
         }
     }
 
-    void animalEats() {
-        System.out.println("Animal eats");
-    }
+    abstract void animalEats();
 
-    void animalDrinks() {
-        System.out.println("Animal drinks");
-    }
+    abstract void animalDrinks();
+
 
 
 }
