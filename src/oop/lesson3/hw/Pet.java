@@ -36,7 +36,19 @@ public abstract class Pet extends Animal {
         }
     }
 
+    static class PetOwner{
 
+        String ownerName;
+        String ownerLastName;
+        String ownerPetName;
+
+        public PetOwner(String ownerName, String ownerLastName, String ownerPetName) {
+            this.ownerName = ownerName;
+            this.ownerLastName = ownerLastName;
+            this.ownerPetName = ownerPetName;
+        }
+
+    }
 
 
 }

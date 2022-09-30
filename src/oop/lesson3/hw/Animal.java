@@ -4,10 +4,10 @@ package oop.lesson3.hw;
 
 public abstract class Animal {
 
-    public Animal() {
-        System.out.println("I am an animal");
+    public Animal(){
         countAnimals++;
     }
+
 
     private static int countAnimals;
 
