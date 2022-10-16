@@ -1,8 +1,14 @@
 package oop.lesson3.hw;
+import java.io.Serializable;
 
 
-
-public abstract class Animal {
+public abstract class Animal implements Serializable {
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "eyesCount=" + eyesCount +
+                '}';
+    }
 
     public Animal(){
         countAnimals++;

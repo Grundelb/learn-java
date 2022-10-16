@@ -1,10 +1,21 @@
 package oop.lesson3.hw;
 
-public abstract class Pet extends Animal {
+import java.io.Serializable;
+
+public abstract class Pet extends Animal implements Serializable {
 
     public Pet(int eyesCount) {
         setEyesCount(eyesCount);
         System.out.println("I am a pet");
+    }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "petName='" + petName + '\'' +
+                ", petTail=" + petTail +
+                ", petPaw=" + petPaw +
+                '}';
     }
 
     private String petName;

@@ -1,6 +1,10 @@
 package oop.lesson3.hw;
 
-public class Dog extends Pet implements PetInterface {
+import java.io.Serializable;
+
+public class Dog extends Pet implements PetInterface, Serializable {
+
+
 
     public Dog(int eyesCount, String name){
         super(eyesCount);

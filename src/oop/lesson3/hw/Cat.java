@@ -1,6 +1,8 @@
 package oop.lesson3.hw;
 
-public class Cat extends Pet implements PetInterface{
+import java.io.Serializable;
+
+public class Cat extends Pet implements PetInterface, Serializable {
 
     public Cat(int eyesCount) {
         super(eyesCount);
