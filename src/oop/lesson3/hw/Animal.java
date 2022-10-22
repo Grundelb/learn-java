@@ -1,8 +1,22 @@
 package oop.lesson3.hw;
 import java.io.Serializable;
+import java.util.Objects;
 
 
 public abstract class Animal implements Serializable {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Animal)) return false;
+        Animal animal = (Animal) o;
+        return getEyesCount() == animal.getEyesCount();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEyesCount());
+    }
+
     @Override
     public String toString() {
         return "Animal{" +

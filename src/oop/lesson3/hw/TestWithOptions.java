@@ -1,10 +1,12 @@
 package oop.lesson3.hw;
 
 import java.io.*;
-import java.util.InputMismatchException;
+import java.util.*;
 
-public class TestWithOptions {
+    public class TestWithOptions {
     static int optionsInput;
+    private static int dogsNumber = 1;
+    static Map<Integer, Dog> dogsStore = new HashMap<>();
 
     public static void optionWriteDog(Dog dog) throws IOException {
 
@@ -35,15 +37,78 @@ public class TestWithOptions {
 
     }
 
-
-    public static void main(String[] args) throws IOException {
+    public static void optionAddNewDog() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
         Dog dog = new Dog(2, null);
-        try  {
+
+        try {
             System.out.println("Please enter pet's name: ");
             String inputDogName = reader.readLine();
             dog.setPetName(inputDogName);
+
+
+        } catch (InputMismatchException e) {
+            e.getStackTrace();
+        } catch (IOException e) {
+            e.getStackTrace();
+        }
+        dogsStore.put(dogsNumber, dog);
+        dogsNumber++;
+    }
+
+    public static void optionRemoveDog() {
+
+        int dogNumberValue = 0;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
+            dogNumberValue = Integer.parseInt(reader.readLine());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if (dogsStore.containsKey(dogNumberValue)) {
+            dogsStore.remove(dogNumberValue);
+        } else {
+            System.out.println("Number is absent");
+        }
+
+    }
+
+    public static void optionShowDogs() {
+        ArrayList<Dog> values = new ArrayList<>(dogsStore.values());
+        System.out.println("Your dogs: " + values);
+    }
+
+    public static void optionUpdateDog(int dogNumberValue, Dog dog) {
+        if (dogsStore.containsKey(dogNumberValue)) {
+
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));) {
+                System.out.println("Please enter new pet's name: ");
+                String inputDogName = reader.readLine();
+                dog.setPetName(inputDogName);
+                dogsStore.put(dogNumberValue, dog);
+
+
+            } catch (InputMismatchException e) {
+                e.getStackTrace();
+            } catch (IOException e) {
+                e.getStackTrace();
+            }
+
+        } else {
+            System.out.println("Number is absent");
+        }
+
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        Dog dog1 = new Dog(2, null);
+
+        try {
+            System.out.println("Please enter pet's name: ");
+            String inputDogName = reader.readLine();
+            dog1.setPetName(inputDogName);
+
 
         } catch (InputMismatchException e) {
             e.getStackTrace();
@@ -51,18 +116,37 @@ public class TestWithOptions {
             e.getStackTrace();
         }
 
-
-        System.out.println("Please choose your option: \n1 to write file\n2 to read file \n3 to exit");
+        System.out.println("Please choose your option: \n1 to write file\n2 to read file \n3 to add new dog"
+                + "\n4 to add remove dog \n5 to show all dogs \n6 to update your dog \n7 exit");
         try {
             optionsInput = Integer.parseInt(reader.readLine());
 
-            if (optionsInput == 1) {
-                optionWriteDog(dog);
-            } else if (optionsInput == 2) {
-                optionReadDog(dog);
-            } else if (optionsInput == 3) {
-                System.out.println("exit");
-            } else {throw new MismatchInputException("Wrong input!");}
+            switch (optionsInput) {
+                case 1:
+                    optionWriteDog(dog1);
+                    break;
+                case 2:
+                    optionReadDog(dog1);
+                    break;
+                case 3:
+                    optionAddNewDog();
+                    break;
+                case 4:
+                    optionRemoveDog();
+                    break;
+                case 5:
+                    optionShowDogs();
+                    break;
+                case 6:
+                    optionUpdateDog(1, dog1);
+                    break;
+                case 7:
+                    System.out.println("Exit");
+                    break;
+                default:
+                    throw new MismatchInputException("Wrong input!");
+            }
+
 
         } catch (InputMismatchException e) {
             e.getStackTrace();
@@ -79,7 +163,7 @@ public class TestWithOptions {
 }
 
 class MismatchInputException extends Exception {
-    MismatchInputException(String message){
+    MismatchInputException(String message) {
         super(message);
     }
 }
