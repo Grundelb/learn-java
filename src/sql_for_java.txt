@@ -1,0 +1,87 @@
+1
+CREATE TABLE cats (
+cat_id INT NOT NULL IDENTITY primary key, 
+name varchar(25),
+pet_owners_id integer constraint ctype_id_owner_fk references owners (owner_id)
+);
+
+CREATE TABLE dogs (
+dog_id INT NOT NULL IDENTITY primary key,
+name varchar(25),
+pet_owners_id integer constraint dtype_id_owner_fk references owners (owner_id)
+);
+
+CREATE TABLE owners (
+owner_id INT NOT NULL IDENTITY primary key,
+name varchar(25),
+email varchar(25),
+date_registration date
+);
+
+2
+INSERT INTO dbo.dogs
+	(name, pet_owners_id)
+	VALUES ('Gaechka', 1),
+	('Dusya', 2),
+	('Klychek', 3);
+
+INSERT INTO dbo.cats
+	(name, pet_owners_id)
+	VALUES ('Pushok', 1),
+	('Murzik', 2),
+	('Gav', 3);
+
+INSERT INTO dbo.owners
+	(name, email, date_registration)
+	VALUES ('Grigorii', 'grigorii@testmail.com', SYSDATETIME()),
+			('Ksenia', 'ksenia@testmail.com', '2022-10-04'),
+			('Zaur', 'zaur@testmail.com', '2021-03-12');
+			
+3
+UPDATE cats
+	SET
+	pet_owners_id = 1
+	WHERE cat_id = 3;
+	
+4
+DELETE FROM dogs
+	WHERE dog_id=1;
+
+5
+DELETE 
+FROM dogs;
+
+6
+SELECT * 
+FROM dogs
+	WHERE pet_owners_id IN (1,2);
+
+SELECT * 
+FROM owners
+	WHERE date_registration BETWEEN '2022-01-01' AND '2022-11-21';
+
+SELECT * 
+FROM cats
+	WHERE name LIKE '%ok';
+
+7
+SELECT owners.name as 'Owner name', cats.name as 'Cat name', dogs.name as 'Dog name'
+FROM owners
+	LEFT JOIN cats ON
+	owners.owner_id = cats.pet_owners_id
+	LEFT JOIN dogs ON
+	owners.owner_id = dogs.pet_owners_id
+	ORDER BY
+	owners.name
+	
+	
+8
+SELECT COUNT(*)
+	+(SELECT COUNT(*) FROM dogs)
+	+(SELECT COUNT(*) FROM cats)
+FROM owners;
+
+9
+SELECT name, MIN(owner_id) as 'ID number'
+FROM owners
+	GROUP BY owner_id, name;
