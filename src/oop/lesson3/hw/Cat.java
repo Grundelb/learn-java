@@ -9,6 +9,50 @@ public class Cat extends Pet implements PetInterface, Serializable {
         System.out.println("Meow! I'm a cat");
     }
 
+    public Cat(int catID, int ownerID, String petName) {
+        super(petName);
+        this.catID = catID;
+        this.ownerID = ownerID;
+    }
+
+    public Cat(int catID, int ownerID) {
+        this.catID  = catID;
+        this.ownerID = ownerID;
+    }
+
+    public Cat(String petName, int ownerID) {
+        super(petName);
+        this.ownerID = ownerID;
+    }
+
+    public int getOwnerID() {
+        return ownerID;
+    }
+
+    public void setOwnerID(int ownerID) {
+        this.ownerID = ownerID;
+    }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "catID=" + catID +
+                ", ownerID=" + ownerID +
+                ", name=" + getPetName() +
+                '}';
+    }
+
+    public int getCatID() {
+        return catID;
+    }
+
+    public void setCatID(int catID) {
+        this.catID = catID;
+    }
+
+    private int catID;
+    private int ownerID;
+
     @Override
     void animalEats() {
 
@@ -24,7 +68,7 @@ public class Cat extends Pet implements PetInterface, Serializable {
         PetInterface.super.run();
     }
 
-    public class CatFood{
+    public class CatFood {
         String dryFood;
         String WetFood;
 
@@ -44,7 +88,6 @@ public class Cat extends Pet implements PetInterface, Serializable {
             WetFood = wetFood;
         }
     }
-
 
 
 }

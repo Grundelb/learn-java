@@ -39,7 +39,7 @@ import java.util.*;
 
     public static void optionAddNewDog() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Dog dog = new Dog(2, null);
+        Dog dog = new Dog("2", 5);
 
         try {
             System.out.println("Please enter pet's name: ");
@@ -102,7 +102,7 @@ import java.util.*;
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Dog dog1 = new Dog(2, null);
+        Dog dog1 = new Dog("2", 33);
 
         try {
             System.out.println("Please enter pet's name: ");
