@@ -3,9 +3,10 @@ package db;
 import oop.lesson3.hw.*;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.sql.*;
 
 public class Options {
 
@@ -71,16 +72,7 @@ public class Options {
             System.out.println("Enter email: ");
             String ownerEmail = sc.nextLine();
 
-            System.out.println("Enter registration year: ");
-            int year = sc.nextInt();
-            System.out.println("Enter registration month: ");
-            int month = sc.nextInt();
-            System.out.println("Enter registration day: ");
-            int day = sc.nextInt();
-            Date regDate = new Date(year, day, month);
-
-
-            petOwner = new Pet.PetOwner(name, ownerEmail, regDate);
+            petOwner = new Pet.PetOwner(name, ownerEmail);
             ownerDao = new OwnerDao();
 
             ownerDao.add(petOwner);
@@ -147,6 +139,89 @@ public class Options {
 
             System.out.println(catDao.get(catName));
 
+        } catch (InputMismatchException e) {
+            System.out.println("Wrong input!");
+        }
+    }
+
+    public void getJoinStatment() {
+        JoinOwnerDao joinOwnerDao = new JoinOwnerDao();
+        joinOwnerDao.getAll().stream().forEach(System.out::println);
+    }
+
+    public void getOwnerIdSortedByMin() {
+        CountofRows cr = new CountofRows();
+        cr.getAll().stream().forEach(System.out::println);
+    }
+
+    public void getTotalCountOfRows() {
+        CountofRows cr = new CountofRows();
+        System.out.println(cr.getCount());
+    }
+
+    public void getOwnersInRangeOfDateRegistration() {
+        try (Scanner sc = new Scanner(System.in);) {
+
+            OwnerDao petOwner = new OwnerDao();
+
+            System.out.println("Enter first date in format YYYY-MM-DD");
+            String firstDate = sc.nextLine();
+            Date firstDateSQL = Date.valueOf(firstDate);
+
+            System.out.println("Enter first date in format YYYY-MM-DD");
+            String secondDate = sc.nextLine();
+            Date secondDateSQL = Date.valueOf(secondDate);
+
+            petOwner.getAll(firstDateSQL, secondDateSQL).stream().forEach(System.out::println);
+
+        } catch (InputMismatchException e) {
+            System.out.println("Wrong input!");
+        }
+    }
+
+
+    public void menu() {
+        try (
+                Scanner sc = new Scanner(System.in);) {
+
+            int inputNumber = sc.nextInt();
+            switch (inputNumber) {
+                case 1:
+                    addOwner();
+                    break;
+                case 2:
+                    addDod();
+                    break;
+                case 3:
+                    addCat();
+                    break;
+                case 4:
+                    updateCat();
+                    break;
+                case 5:
+                    deleteDog();
+                    break;
+                case 6:
+                    deleteAllDogs();
+                    break;
+                case 7:
+                    getJoinStatment();
+                    break;
+                case 8:
+                    getTotalCountOfRows();
+                    break;
+                case 9:
+                    getOwnerIdSortedByMin();
+                    break;
+                case 10:
+                    getCatByName();
+                    break;
+                case 11:
+                    getOwnersInRangeOfDateRegistration();
+                    break;
+                default:
+                    System.out.println("There is no such option");
+            }
         } catch (InputMismatchException e) {
             System.out.println("Wrong input!");
         }

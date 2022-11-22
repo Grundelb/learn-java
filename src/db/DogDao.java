@@ -16,6 +16,11 @@ public class DogDao implements Dao<Dog> {
     }
 
     @Override
+    public Dog getCount() {
+        return null;
+    }
+
+    @Override
     public List<Dog> get(String name) {
         return null;
     }

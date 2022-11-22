@@ -89,10 +89,9 @@ public abstract class Pet extends Animal implements Serializable {
             this.registrationDate = (java.sql.Date) registrationDate;
         }
 
-        public PetOwner(String ownerName, String ownerEmail, Date registrationDate) {
+        public PetOwner(String ownerName, String ownerEmail) {
             this.ownerName = ownerName;
             this.ownerEmail = ownerEmail;
-            this.registrationDate = (java.sql.Date) registrationDate;
         }
 
         public PetOwner(int idOwner, String ownerName) {

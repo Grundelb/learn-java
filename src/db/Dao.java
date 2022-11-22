@@ -8,6 +8,8 @@ import java.util.List;
 public interface Dao<T> {
     T get(int id);
 
+    T getCount();
+
     List<T> get(String name);
 
     T get(Date date1, Date date2);

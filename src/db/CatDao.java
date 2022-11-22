@@ -17,6 +17,11 @@ public class CatDao implements Dao<Cat> {
     }
 
     @Override
+    public Cat getCount() {
+        return null;
+    }
+
+    @Override
     public List<Cat> get(String name) {
         String sql = "SELECT * FROM cats WHERE name LIKE ?";
         List<Cat> cat = new ArrayList<>();
