@@ -183,7 +183,17 @@ public class Options {
     public void menu() {
         try (
                 Scanner sc = new Scanner(System.in);) {
-
+            System.out.println("Please choose your option: \n1 to add owner" +
+                    "\n2 to add dog " +
+                    "\n3 to add cat " +
+                    "\n4 to update cat " +
+                    "\n5 to delete dog " +
+                    "\n6 to delete all dogs " +
+                    "\n7 to show all owners, dogs and cats" +
+                    "\n8 to get total count of rows" +
+                    "\n9 to get owners sorted by id " +
+                    "\n10 to find cat by name" +
+                    "\n11 to get owners by date range");
             int inputNumber = sc.nextInt();
             switch (inputNumber) {
                 case 1:
